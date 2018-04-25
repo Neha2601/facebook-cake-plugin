@@ -70,8 +70,8 @@ class FacebookComponent extends Component
     {
         try {
             $this->helper = $this->facebookObject->getRedirectLoginHelper();
-            if (isset($this->request->query['state'])) {
-                $this->helper->getPersistentDataHandler()->set('state', $this->request->query['state']);
+            if (isset($this->request->getQuery()['state'])) {
+                $this->helper->getPersistentDataHandler()->set('state', $this->request->getQuery()['state']);
             }
             $accessToken = $this->helper->getAccessToken();
             if (!$accessToken->isLongLived()) {
